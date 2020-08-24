@@ -1,0 +1,9 @@
+*.log
+*.pot
+*.pyc
+savests_env
+/media
+__pycache__/
+local_settings.py
+.vscode
+.env
