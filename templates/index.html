@@ -12,17 +12,21 @@
     </style>
 </head>
 <body>
-    <h1>Send email to all users</h1>
-    {% if sent %}
-        <p>E-mail sent successfully</p>
+    {% if user.is_staff %}
+        <h1>Send email to all users</h1>
+        {% if sent %}
+            <p>E-mail sent successfully</p>
+        {% else %}
+            <div>
+                <form action="" method="POST">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="submit" value="send e-mail">
+                </form>
+            </div>
+        {% endif %}
     {% else %}
-        <div>
-            <form action="" method="POST">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="submit" value="send e-mail">
-            </form>
-        </div>
+        <h2>Sorry only staffs are allowed to view this page</h2>
     {% endif %}
 </body>
 </html>
